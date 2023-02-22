@@ -7,6 +7,8 @@ import {
   Request,
   Get,
   Res,
+  ClassSerializerInterceptor,
+  UseInterceptors,
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { AuthService } from './auth.service';
@@ -16,6 +18,7 @@ import { LocalAuthGuard } from '../common/local-auth.guard';
 import { Response } from 'express';
 import { UserDto } from '../user/dtos/user.dto';
 
+@UseInterceptors(ClassSerializerInterceptor)
 @Controller({ path: 'auth', version: '1' })
 export class AuthController {
   constructor(public authService: AuthService, public jwtService: JwtService) {}
