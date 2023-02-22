@@ -18,7 +18,7 @@ import { UserDto } from './dtos/user.dto';
 import { RoleGuard } from '../common/role.guard';
 import { UserService } from './user.service';
 
-@Controller('users')
+@Controller({ path: 'users', version: '1' })
 export class UserController {
   constructor(public userService: UserService) {}
   @UseGuards(JwtAuthGuard, RoleGuard)
